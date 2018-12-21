@@ -40,3 +40,21 @@ WHERE
 ?x obo-term:IAO_0000115 ?definition . 
 FILTER regex(STR(?x), "HP_*") .
 }
+
+
+# --
+
+# Extract kidney-related genes, labels, synonyms, and definitions
+
+PREFIX obo-term: <http://purl.obolibrary.org/obo/>
+PREFIX description: <http://purl.org/dc/elements/1.1/description>
+SELECT DISTINCT str(?label) ?x str(?description)
+from <http://purl.obolibrary.org/obo/merged/KTAO>
+WHERE
+{
+?x a owl:Class .
+?x rdfs:label ?label .
+#?x obo-term:IAO_0000115 ?description. 
+?x description: ?description. 
+FILTER regex(STR(?x), "OGG_*") .
+}
