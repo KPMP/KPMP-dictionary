@@ -25,3 +25,18 @@ WHERE
 ?x obo-term:IAO_0000115 ?definition . 
 FILTER regex(STR(?x), "CL_*") .
 }
+
+# --
+
+# Extract kidney-related phenotypes, labels, synonyms, and definitions
+
+PREFIX obo-term: <http://purl.obolibrary.org/obo/>
+SELECT DISTINCT str(?label) ?x str(?definition)
+from <http://purl.obolibrary.org/obo/merged/KTAO>
+WHERE
+{
+?x a owl:Class .
+?x rdfs:label ?label .
+?x obo-term:IAO_0000115 ?definition . 
+FILTER regex(STR(?x), "HP_*") .
+}
