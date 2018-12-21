@@ -15,3 +15,4 @@ The KPMP dictionary is organized based on category:
 
 ... ... 
 
+Please check the dictionary files in this GitHub website. 
