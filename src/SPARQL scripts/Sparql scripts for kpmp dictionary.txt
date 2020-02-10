@@ -1,3 +1,41 @@
+# Feb 9, 2020
+
+PREFIX obo-term: <http://purl.obolibrary.org/obo/>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+SELECT DISTINCT str(?label) ?x ?xp_label ?xp str(?definition)
+from <http://purl.obolibrary.org/obo/merged/KTAO>
+WHERE
+{
+?x a owl:Class .
+?x rdfs:label ?label .
+# ?x oboInOwl:hasExactSynonym ?exact-synonym .
+?x obo-term:IAO_0000115 ?definition . 
+?x rdfs:subClassOf ?xp .
+?xp rdfs:label ?xp_label .
+
+FILTER regex(STR(?x), "UBERON_*") .
+} 
+
+PREFIX obo-term: <http://purl.obolibrary.org/obo/>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+SELECT DISTINCT str(?label) ?x ?xp_label ?xp str(?definition)
+from <http://purl.obolibrary.org/obo/merged/KTAO>
+WHERE
+{
+?x a owl:Class .
+?x rdfs:label ?label .
+# ?x oboInOwl:hasExactSynonym ?exact-synonym .
+?x obo-term:IAO_0000115 ?definition . 
+?x rdfs:subClassOf ?xp .
+?xp rdfs:label ?xp_label .
+
+FILTER regex(STR(?x), "CL_*") .
+} 
+
+
+--
+# Dec 20, 2018
+
 # Extract kidney-related anatomic entities, labels, synonyms, and definitions
 
 PREFIX obo-term: <http://purl.obolibrary.org/obo/>
