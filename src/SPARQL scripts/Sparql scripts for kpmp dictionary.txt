@@ -1,5 +1,7 @@
 # March 6, 2020
 
+# March 6, 2020
+
 PREFIX obo-term: <http://purl.obolibrary.org/obo/>
 PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 SELECT DISTINCT str(?label) ?x str(?exactSynonym) str(?broadSynonym) str(?narrowSynonym) str(?relatedSynonym) str(?subclassParent_label) str(?partParent_label) str(?definition)
@@ -8,10 +10,6 @@ WHERE
 {
 ?x a owl:Class .
 ?x rdfs:label ?label .
-?x oboInOwl:hasExactSynonym ?exactSynonym . 
-?x oboInOwl:hasBroadSynonym ?broadSynonym . 
-?x oboInOwl:hasNarrowSynonym ?narrowSynonym . 
-?x oboInOwl:hasRelatedSynonym ?relatedSynonym . 
 ?x obo-term:IAO_0000115 ?definition . 
 
 ?x rdfs:subClassOf ?x_restriction .
@@ -22,6 +20,11 @@ WHERE
 ?subclassParent rdfs:label ?subclassParent_label .
 
 FILTER regex(STR(?x), "UBERON_*") .
+
+    OPTIONAL { ?x oboInOwl:hasExactSynonym ?exactSynonym . }
+    OPTIONAL { ?x oboInOwl:hasBroadSynonym ?broadSynonym . }
+    OPTIONAL { ?x oboInOwl:hasNarrowSynonym ?narrowSynonym . }
+    OPTIONAL { ?x oboInOwl:hasRelatedSynonym ?relatedSynonym . }
 } 
 
 
