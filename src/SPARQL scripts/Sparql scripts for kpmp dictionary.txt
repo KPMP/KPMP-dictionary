@@ -1,3 +1,56 @@
+# March 6, 2020
+# add synonyms
+
+PREFIX obo-term: <http://purl.obolibrary.org/obo/>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+SELECT DISTINCT str(?label) ?x str(?exactSynonym) str(?narrowSynonym) str(?broadSynonym) str(?relatedSynonym) str(?subclassParent_label) str(?partParent_label) str(?definition)
+from <http://purl.obolibrary.org/obo/merged/KTAO>
+WHERE
+{
+?x a owl:Class .
+?x rdfs:label ?label .
+?x oboInOwl:hasExactSynonym ?exactSynonym . 
+?x oboInOwl:has_narrow_synonym ?narrowSynonym . 
+?x oboInOwl:has_broad_synonym ?broadSynonym . 
+?x oboInOwl:hasRelatedSynonym ?relatedSynonym . 
+?x obo-term:IAO_0000115 ?definition . 
+
+?x rdfs:subClassOf ?x_restriction .
+?x_restriction owl:onProperty obo-term:BFO_0000050; owl:someValuesFrom ?partParent .
+?partParent rdfs:label ?partParent_label .
+
+?x rdfs:subClassOf ?subclassParent .
+?subclassParent rdfs:label ?subclassParent_label .
+
+FILTER regex(STR(?x), "UBERON_*") .
+} 
+
+
+# March 6, 2020
+
+PREFIX obo-term: <http://purl.obolibrary.org/obo/>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+SELECT DISTINCT str(?label) ?x str(?subclassParent_label) str(?partParent_label) str(?definition)
+from <http://purl.obolibrary.org/obo/merged/KTAO>
+WHERE
+{
+?x a owl:Class .
+?x rdfs:label ?label .
+# ?x oboInOwl:hasExactSynonym ?exact-synonym .
+?x obo-term:IAO_0000115 ?definition . 
+
+?x rdfs:subClassOf ?x_restriction .
+?x_restriction owl:onProperty obo-term:BFO_0000050; owl:someValuesFrom ?partParent .
+?partParent rdfs:label ?partParent_label .
+
+?x rdfs:subClassOf ?subclassParent .
+?subclassParent rdfs:label ?subclassParent_label .
+
+FILTER regex(STR(?x), "UBERON_*") .
+} 
+
+
+
 # Feb 9, 2020
 
 PREFIX obo-term: <http://purl.obolibrary.org/obo/>
