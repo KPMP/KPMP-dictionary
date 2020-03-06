@@ -12,12 +12,16 @@ WHERE
 ?x rdfs:label ?label .
 ?x obo-term:IAO_0000115 ?definition . 
 
+OPTIONAL {
 ?x rdfs:subClassOf ?x_restriction .
 ?x_restriction owl:onProperty obo-term:BFO_0000050; owl:someValuesFrom ?partParent .
 ?partParent rdfs:label ?partParent_label .
+}
 
+OPTIONAL {
 ?x rdfs:subClassOf ?subclassParent .
 ?subclassParent rdfs:label ?subclassParent_label .
+}
 
 FILTER regex(STR(?x), "UBERON_*") .
 
