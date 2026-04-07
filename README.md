@@ -18,3 +18,5 @@ Paper References:
 
 Please check the dictionary files in this GitHub website. 
 
+Contact: Please contact Yongqun "Oliver" He from the University of Michigan Medical School for more information, questions, comments, and suggestions. 
+Thanks! 
